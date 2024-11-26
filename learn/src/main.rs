@@ -58,3 +58,19 @@ fn boolean() {
 
     println!("boolean :{} :{}", a , b)
 }
+
+#[test]
+fn tuple() {
+    let data: (i32, bool, f64) = (1, true, 0.1);
+    println!("data : {:?}", data);
+
+
+    let a = data.0;
+    let b = data.1;
+
+    println!("data 0 : {}", a);
+    println!("data 0 : {}", b);
+
+    let (c , d , e) =  data;
+    println!("list : {} {} {}", c, d, e);
+}
