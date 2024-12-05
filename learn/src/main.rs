@@ -344,48 +344,101 @@ fn range() {
     }
 }
 
-fn print_number(number: i32) {
-    println!("{}", number);
+// fn print_number(number: i32) {
+//     println!("{}", number);
+// }
+
+// fn print_name(name: String) {
+//     println!("{}", name);
+// }
+
+// #[test]
+// fn test_hi() {
+//     let number = 10;
+
+//     print_number(number);
+
+//     let name = String::from("eko");
+
+//     print_name(name);
+// }
+
+// fn fullname(firstname: String, lastname: String) -> String {
+//     let fullname = format!("{} {}", firstname, lastname);
+
+//     return fullname;
+// }
+
+// #[test]
+// fn test_fullname() {
+//     let firstname = String::from("ahmad");
+//     let lastname = String::from("ucup");
+
+//     let _full = fullname(firstname, lastname);
+// }
+
+// fn change_value(value: String) {
+//     value.push("test");
+// }
+
+// #[test]
+// fn test_change_value() {
+//     let value = String::from("ahmad");
+
+//     change_value(value);
+
+//     println!("{}", value)
+// }
+
+
+struct Person {
+    firstname: String,
+    mid_name: String,
+    lastname: String,
+    age: u8,
 }
 
-fn print_name(name: String) {
-    println!("{}", name);
+fn print_person(person: &Person) {
+    println!("{}", person.age);
+    println!("{}", person.firstname);
+    println!("{}", person.mid_name);
+    println!("{}", person.lastname);
 }
-
 #[test]
-fn test_hi() {
-    let number = 10;
-
-    print_number(number);
-
-    let name = String::from("eko");
-
-    print_name(name);
-}
-
-fn fullname(firstname: String, lastname: String) -> String {
-    let fullname = format!("{} {}", firstname, lastname);
-
-    return fullname;
-}
-
-#[test]
-fn test_fullname() {
+fn struct_person() {
     let firstname = String::from("ahmad");
-    let lastname = String::from("ucup");
+    let lastname = String::from("xxx");
 
-    let _full = fullname(firstname, lastname);
+    let person: Person = Person {
+        age: 20,
+        firstname,
+        mid_name: String::from("xxxx"),
+        lastname
+    };
+
+    let person2: Person = Person {
+        firstname: person.firstname.clone(),
+        mid_name: person.mid_name.clone(),
+        lastname: person.lastname.clone(),
+        ..person
+    };
+    print_person(&person);
+    print_person(&person2);
 }
 
-fn change_value(value: String) {
-    value.push("test");
-}
+struct GeoPoint(f64, f64);
 
 #[test]
-fn test_change_value() {
-    let value = String::from("ahmad");
+fn tuple_struct() {
+    let geo_point = GeoPoint(-6.2 , 6.6);
 
-    change_value(value);
+    println!("{}", geo_point.0);
+    println!("{}", geo_point.1);
+}
 
-    println!("{}", value)
+struct Nothing;
+
+#[test]
+fn test_nothing() {
+    let _nothing1: Nothing = Nothing;
 }
