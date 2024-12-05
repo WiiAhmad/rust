@@ -1,3 +1,4 @@
+
 fn main() {
     println!("Hello, world!");
 }
@@ -343,3 +344,48 @@ fn range() {
     }
 }
 
+fn print_number(number: i32) {
+    println!("{}", number);
+}
+
+fn print_name(name: String) {
+    println!("{}", name);
+}
+
+#[test]
+fn test_hi() {
+    let number = 10;
+
+    print_number(number);
+
+    let name = String::from("eko");
+
+    print_name(name);
+}
+
+fn fullname(firstname: String, lastname: String) -> String {
+    let fullname = format!("{} {}", firstname, lastname);
+
+    return fullname;
+}
+
+#[test]
+fn test_fullname() {
+    let firstname = String::from("ahmad");
+    let lastname = String::from("ucup");
+
+    let _full = fullname(firstname, lastname);
+}
+
+fn change_value(value: String) {
+    value.push("test");
+}
+
+#[test]
+fn test_change_value() {
+    let value = String::from("ahmad");
+
+    change_value(value);
+
+    println!("{}", value)
+}
