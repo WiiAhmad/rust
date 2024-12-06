@@ -398,6 +398,25 @@ struct Person {
     age: u8,
 }
 
+impl Person {
+    fn say_hello(&self, name: &str) {
+       println!("Hello {}, my name is {}", name, self.firstname) 
+    }
+}
+
+#[test]
+fn test_method() {
+    let person = Person {
+        firstname: String::from("ahmad"),
+        mid_name: String::from("xxx"),
+        lastname: String::from("yyy"),
+        age: 20,
+    };
+
+    person.say_hello("budi");
+}
+
+
 fn print_person(person: &Person) {
     println!("{}", person.age);
     println!("{}", person.firstname);
@@ -441,4 +460,18 @@ struct Nothing;
 #[test]
 fn test_nothing() {
     let _nothing1: Nothing = Nothing;
+}
+
+impl GeoPoint {
+    fn new(long: f64, lat: f64)-> GeoPoint {
+        GeoPoint(long, lat)
+    }
+}
+
+#[test]
+fn test_method_new() {
+    let geo_point: GeoPoint = GeoPoint::new(-6.7, 107.9);
+
+    println!("long : {}", geo_point.0);
+    println!("long : {}", geo_point.1);
 }
