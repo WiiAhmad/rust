@@ -475,3 +475,85 @@ fn test_method_new() {
     println!("long : {}", geo_point.0);
     println!("long : {}", geo_point.1);
 }
+
+enum Level{
+    Regular,
+    Premium,
+    Platinum
+}
+
+#[test]
+fn test_enum() {
+    let _level: Level = Level::Premium;
+    let _level: Level = Level::Regular;
+    let _level: Level = Level::Platinum;
+}
+
+enum Payment {
+    Creditcard(String),
+    BankTransfer(String, String),
+    Ewallet(String, String),
+}
+
+impl Payment {
+    fn pay(&self, amount: u32) {
+        match self {
+            Payment::Creditcard(number) =>{
+                println!("paying with creditcard {} amount {}", number, amount);
+            }
+            Payment::BankTransfer(bank, number) =>{
+                println!("paying with bank transfer {} {} amount {}",bank, number, amount);
+            }
+            Payment::Ewallet(wallet, number) =>{
+                println!("paying with creditcard {} {} amount {}",wallet, number, amount);
+            }
+        }
+    }
+}
+
+#[test]
+fn test_payment() {
+    let _payment1: Payment = Payment::Creditcard(String::from("14718241247891"));
+    _payment1.pay(30000);
+    let _payment2: Payment = Payment::BankTransfer(String::from("BCA"), String::from("48912841298"));
+    _payment2.pay(250000);
+    let _payment3: Payment = Payment::Ewallet(String::from("Gopay"), String::from("10747941790479"));
+    _payment3.pay(120000);
+    let payment: Payment = Payment::BankTransfer(String::from("BDD"), String::from("4919142194"));
+    payment.pay(10000);
+    
+}
+
+#[test]
+fn test_enum2() {
+    let level: Level = Level::Premium;
+
+    match level {
+        Level::Regular => {
+            println!("regular");
+        }
+        Level::Premium => {
+            println!("premium");
+        }
+        Level::Platinum => {
+            println!("platinum");
+        }
+    }
+}
+
+#[test]
+fn test_match_value() {
+    let name: &str = "Eko";
+    
+    match name {
+        "Eko" => {
+            println!("hello eko")
+        }
+        "budi" => {
+            println!("hello budi")
+        }
+        other =>  {
+            println!("hello {}", other)
+        }
+    }
+}
